@@ -1,3 +1,8 @@
+# Differences in fork:
+- More conveniences in commands (shorter, less verbose commands)
+- Assumes only 1 timer is running at a time.
+- Output shows min tally
+
 # Tiny Time tracker
 [![NPM](https://nodei.co/npm/time-tracker-cli.png?downloads=true)](https://nodei.co/npm/time-tracker-cli/)
 
@@ -51,7 +56,7 @@ $ timer -l <key of the task>
 ```
 ## How it works
 The data are stored inside ~/.config/time-tracker-cli.json
-If you open you should see: 
+If you open you should see:
 
 ```javascript
 {

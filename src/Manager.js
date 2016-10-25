@@ -11,6 +11,12 @@ export class Manager {
         this.tasks = cfg.all.tasks
     }
 
+    // wipes the entire time store
+    clearStore() {
+        config.clear();
+        // config.all();
+    }
+
     getTask(name) {
         return (this.tasks[name]) ? this.tasks[name] : {}
     }

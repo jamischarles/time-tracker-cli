@@ -40,3 +40,8 @@ export const humanParseDiff = function(secs) {
     seconds = (seconds == 0 ? '' : (seconds  < 10 ? '0' + seconds : seconds) + 's')
     return hours + minutes + seconds
 }
+
+export const getMinutes = function(secs) {
+    let minutes = Math.floor((secs / 60))
+    return minutes
+}
