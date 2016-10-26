@@ -18,12 +18,13 @@ export const sumarize = function(search, tasks, rate, full) {
         total += duration
 
         let outputDuration = humanParseDiff(duration)
+        outputDuration += ` (${getMinutes(duration)}m)` // add min in parens
 
         let name = task.name
-        let startTime = moment(task.task.start).format('DD/MM/YYYY')
-        let stopTime = moment(task.task.stop).format('DD/MM/YYYY')
+        let startTime = moment(task.task.start).format('MM/DD/YYYY')
+        let stopTime = moment(task.task.stop).format('MM/DD/YYYY')
         if (startTime !== stopTime){
-            startTime = moment(task.task.start).format('DD/MM') + '|' + moment(task.task.stop).format('DD/MM YYYY')
+            startTime = moment(task.task.start).format('MM/DD') + '|' + moment(task.task.stop).format('MM/DD YYYY')
         }
         table.push([outputDuration, startTime, name])
     })
@@ -33,7 +34,7 @@ export const sumarize = function(search, tasks, rate, full) {
     if (full){
         let table2 = new Table()
         table2.push(
-            { 'Search': ['\"' + search + '\"'] },
+            // { 'Search': ['\"' + search + '\"'] },
             { 'Total time': [humanParseDiff(total)] },
             { 'Total minutes': [getMinutes(total)] + 'm' }
         )
