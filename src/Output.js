@@ -35,8 +35,8 @@ export const sumarize = function(search, tasks, rate, full) {
         let table2 = new Table()
         table2.push(
             // { 'Search': ['\"' + search + '\"'] },
-            { 'Total time': [humanParseDiff(total)] },
-            { 'Total minutes': [getMinutes(total)] + 'm' }
+            { 'Total time': [`${humanParseDiff(total)} (${getMinutes(total)}m)`] },
+            // { 'Total minutes': [getMinutes(total)] + 'm' }
         )
 
         if (rate){

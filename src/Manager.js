@@ -13,6 +13,7 @@ export class Manager {
 
     // wipes the entire time store
     clearStore() {
+        this.tasks = {} // to get accurate and immediate feedback
         config.clear();
         // config.all();
     }
