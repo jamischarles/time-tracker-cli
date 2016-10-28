@@ -4,6 +4,13 @@ import Table from 'cli-table'
 import {getMinutes, humanParseDiff, recognizeModifierTiming, calcRate} from './Utils'
 
 export const sumarize = function(search, tasks, rate, full) {
+
+    if (tasks.length === 0 ) {
+        return console.log('No Timers are running.')
+    }
+
+
+
     let table = new Table({
         // head: ['Task', 'Duration', 'Dates'],
         head: ['<Done>', 'Start', 'Stop', 'Duration'],
@@ -55,8 +62,13 @@ export const sumarize = function(search, tasks, rate, full) {
         }
     })
 
-    console.log(tableRunning.toString());
-    console.log(table.toString());
+    if (tableRunning.length > 0) {
+        console.log(tableRunning.toString());
+    }
+
+    if (table.length > 0) {
+        console.log(table.toString());
+    }
 
 
     if (full){
