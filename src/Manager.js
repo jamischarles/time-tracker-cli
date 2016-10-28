@@ -60,6 +60,7 @@ export class Manager {
         }
     }
 
+    // FIXME: Rip this out? I don't know that I'll ever use this...
     modifyTask(operation, name, stringTime){
         let t = this.getTask(name)
 
