@@ -78,14 +78,14 @@ module.exports = function createTimer (p) {
 
         timer.stop(result.name)
 
-        sumarize('all', timer.search('all'), program.args[0], true)
         console.log('Stopped:', result.name)
+        sumarize('all', timer.search('all'), program.args[0], true)
     } else if (program.clear){
         timer.clearStore();
         // show all of them now...
+        console.log('Store deleted');
         sumarize('all', timer.search('all'), program.args[0], true)
 
-        console.log('Store deleted');
 
     // } else if (program.add){
     //     timer.modifyTask('add', program.add, program.args[0])
@@ -104,6 +104,18 @@ module.exports = function createTimer (p) {
     } else if (program.export){
         console.log(JSON.stringify(timer.getTasksJson(), null, 4))
     } else {
+        if (program.args.length !== 0) {
+            // console.log('\x1b[36m', 'sometext' ,'\x1b[0m');
+            console.log('\x1b[31m'); // red
+            console.error('Error: You must use a flag if you pass params.')
+            console.log('\x1b[0m'); // end red
+
+            program.outputHelp();
+
+            return
+
+        }
+
         sumarize('all', timer.search('all'), program.args[0], true)
     }
 

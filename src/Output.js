@@ -16,7 +16,7 @@ export const sumarize = function(search, tasks, rate, full) {
         head: ['<Done>', 'Start', 'Stop', 'Duration'],
         chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
         colAligns: ['left', 'right', 'center'],
-        style: { head: ['green'] }
+        style: { head: ['dim'] }
     });
     let total = 0
     let head= `Search: ${search} \n`
