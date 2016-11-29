@@ -52,15 +52,9 @@ module.exports = function createTimer (p) {
 
     let description
     if (program.start){
-        description = program.description || program.args[0]
-        timer.start(program.start, description)
-
-        sumarize('all', timer.search('all'), program.args[0], true)
-        // setTimeout(function(){
-        //     sumarize(program.report, timer.search(program.start), program.args[0], true)
-        // },50);
-
-        // show the timer...
+        // description = program.description || program.args[0]
+        // timer.start(program.start, description)
+        startTask(program.start); 
 
     } else if (program.finish){
         // if no param passed in (for now we aren't passing any, then just remove the currently running task
@@ -104,7 +98,13 @@ module.exports = function createTimer (p) {
     } else if (program.export){
         console.log(JSON.stringify(timer.getTasksJson(), null, 4))
     } else {
-        if (program.args.length !== 0) {
+
+        // if 1 param, assume that's the taskname to start
+        if (program.args.length === 1) {
+            return startTask(program.args[0]) // if 1 param, it's the description 
+        }
+
+        if (program.args.length > 1) {
             // console.log('\x1b[36m', 'sometext' ,'\x1b[0m');
             console.log('\x1b[31m'); // red
             console.error('Error: You must use a flag if you pass params.')
@@ -116,7 +116,19 @@ module.exports = function createTimer (p) {
 
         }
 
+        // if no params, just show all of them...
         sumarize('all', timer.search('all'), program.args[0], true)
     }
 
 }
+
+function startTask(taskName) {
+    timer.start(taskName)
+    // show the timer...
+    sumarize('all', timer.search('all'), undefined, true)
+}
+
+
+
+
+
